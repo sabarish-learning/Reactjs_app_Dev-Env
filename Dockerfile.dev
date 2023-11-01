@@ -1,0 +1,6 @@
+FROM node:alpine
+WORKDIR /reactjs-demo
+COPY package.json .
+RUN npm install
+COPY . .
+CMD ["npm", "start"]
