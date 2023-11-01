@@ -1,6 +1,7 @@
 FROM node:alpine
-WORKDIR /reactjs-demo
-COPY package.json .
+WORKDIR /app
+COPY package.json /app
 RUN npm install
-COPY . .
+COPY . /app
+EXPOSE 3000
 CMD ["npm", "start"]

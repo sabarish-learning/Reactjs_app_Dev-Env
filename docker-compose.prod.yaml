@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-   client:
-     image: client-prod-i
+   app:
+     image: app-prod-i
      build:
        dockerfile: Dockerfile.prod
-     container_name: client-prod-c
+     container_name: app-prod-c
      ports:
        - "8080:80"
      environment:

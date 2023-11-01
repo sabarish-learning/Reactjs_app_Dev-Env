@@ -1,6 +1,6 @@
 version: '3.8'
  
 services:
-     client:
+      app:
         build:
-          context: ./reactjs-demo
+          context: ./Reactjs_app_Dev-Env/
