@@ -9,7 +9,7 @@ checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfig
 
 stage('Build'){
 steps{
-sh 'sudo docker build -t sabarish24/react-prod:1.0 .'
+sh 'sudo docker build -t sabarish24/react-prod:1.0 -f ./Dockerfile.prod .'
  }
 }
 stage('Push'){
