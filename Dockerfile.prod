@@ -1,6 +1,6 @@
 FROM node:alpine AS build
 WORKDIR /app
-COPY package.json ./app
+COPY package.json /app/package.json
 RUN npm uninstall react-scripts
 RUN npm install react-scripts
 COPY . ./app
