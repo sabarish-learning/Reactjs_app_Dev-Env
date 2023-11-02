@@ -1,11 +1,10 @@
-FROM node:alpine AS build
+FROM node:alpine AS build-stage
 WORKDIR /app
-COPY package.json /app/package.json
+COPY package.json .
 RUN npm uninstall react-scripts
 RUN npm install react-scripts
-COPY . ./app
+COPY . .
 RUN npm run build
 
-
-FROM nginx
-COPY --from=build /app/build/ /usr/share/nginx/html
+FROM nginx:alpine
+COPY --from=build-stage /app/build /usr/share/nginx/html
