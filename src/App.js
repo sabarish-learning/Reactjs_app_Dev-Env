@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import logo from './logo.svg';
 import "./App.css";
 import { Table } from "react-bootstrap";
-
+import UserDetail from "./user-data/UserDetail";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
@@ -49,6 +49,7 @@ class App extends Component {
               ))}
             </tbody>
           </Table>
+          <UserDetail />
         </div>
       );
     }
