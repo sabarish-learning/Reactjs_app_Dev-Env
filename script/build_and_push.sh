@@ -1,15 +1,16 @@
 #!/bin/bash
 
-# Define the branch you want to trigger the Docker build on
-DEV_BRANCH="dev"
-MASTER_BRANCH="master"
+# Check the branch before and after the push
+old_branch=$(git rev-parse --abbrev-ref HEAD)
 
 # Define your Docker image name and tag
 IMAGE_NAME_PROD="react-prod"
 IMAGE_NAME_DEV="react-dev"
 IMAGE_TAG="1.0"
 
-if [[ "$CI_COMMIT_REF_NAME" == "$DEV_BRANCH" ]]; then
+
+# Detect branch changes
+if [ "$old_branch" == "dev" ] && [ "$1" == "refs/heads/dev" ]; then
 
   # Build the Docker image
   docker build -t "$IMAGE_NAME_DEV:$IMAGE_TAG" -f ./Dockerfile.dev .
@@ -22,7 +23,7 @@ if [[ "$CI_COMMIT_REF_NAME" == "$DEV_BRANCH" ]]; then
   
   echo "Docker image has been built and pushed to Dev Docker Hub."
 
-elif [ "$CI_COMMIT_REF_NAME" == "$MASTER_BRANCH" ]; then
+elif [ "$old_branch" == "dev" ] && [ "$1" == "refs/heads/master" ]; then
 
 # Build the Docker image
   docker build -t "$IMAGE_NAME_PROD:$IMAGE_TAG" -f ./Dockerfile.prod .
