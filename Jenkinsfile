@@ -22,8 +22,8 @@ docker build -t sabarish24/react-prod:1.0 -f ./Dockerfile.prod .
 stage('Test image') {
 steps {
 echo 'testing…'
-sudo 'docker pull sabarish24/react-prod:1.0'
-sh 'sudo docker inspect - type=image sabarish24/react-prod:1.0 '
+sh 'sudo docker pull sabarish24/react-prod:1.0'
+sh 'sudo docker inspect --type=image sabarish24/react-prod:1.0 '
  }
 }
 stage('Push'){
