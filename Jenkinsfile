@@ -43,9 +43,4 @@ sh 'sudo docker run -d --name react-prod -p 8080:80 sabarish24/react-prod:1.0'
      }
     }
   }
-  post {
-	always {
-		sh 'docker logout'
-		}
-	}
 }
