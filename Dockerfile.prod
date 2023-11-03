@@ -1,12 +1,3 @@
-FROM node:alpine
-WORKDIR /app
-COPY package.json /app/package.json
-RUN npm uninstall react-scripts
-RUN npm install react-scripts
-COPY . /app
-EXPOSE 3000
-CMD [ "npm", "start" ]
-ubuntu@ip-172-31-0-162:~/Reactjs_app_Dev-Env$ cat Dockerfile.prod
 FROM node:alpine AS build-stage
 WORKDIR /app
 COPY package.json .
