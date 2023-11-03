@@ -1,9 +1,7 @@
 pipeline {
- agent any
+ agent none 
   environment {
-       credentialsId: '261b4bc0-b4a4-471f-a23c-0821e2dd462d'
-	   passwordVariable: 'dockerHubPassword'
-	   usernameVariable: 'dockerHubUser'
+	   withCredentials([usernamePassword(credentialsId: '261b4bc0-b4a4-471f-a23c-0821e2dd462d', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]){}
     }
 stages{
 stage('Checkout'){
@@ -34,7 +32,6 @@ sh 'sudo docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}'
 sh 'sudo docker push sabarish24/react-prod:1.0'
  }
 }
-
 stage('Deploy'){
 steps{
 echo 'deploying on another server'
