@@ -17,7 +17,10 @@ if [ "$GITHUB_EVENT_NAME" == "push" ] && [ "$GITHUB_REF" == "refs/heads/dev" ]; 
 
   # Push the image to the dev repository
   docker push "$IMAGE_NAME_PROD:$IMAGE_TAG"
+  else
+     echo "Code pushed to a branch that doesn't trigger image build."
 fi
+
 
 if [ "$GITHUB_EVENT_NAME" == "pull_request" ] && [ "$GITHUB_BASE_REF" == "dev" ] && [ "$GITHUB_HEAD_REF" == "master" ]; then
 
@@ -29,4 +32,6 @@ if [ "$GITHUB_EVENT_NAME" == "pull_request" ] && [ "$GITHUB_BASE_REF" == "dev" ]
 
   # Push the image to the prod repository
   docker push "$IMAGE_NAME_PROD:$IMAGE_TAG"
+  else
+     echo "Code pushed to a branch that doesn't trigger image build."
 fi
