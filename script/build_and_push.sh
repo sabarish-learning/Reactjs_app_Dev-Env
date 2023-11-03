@@ -15,9 +15,9 @@ handle_push() {
     # Push event to the 'dev' branch
     echo "Detected push to 'dev' branch. Building and pushing to Dev repo."
     docker build -t $IMAGE_NAME_DEV:$IMAGE_TAG -f ./Dockerfile.dev .
-   withDockerRegistry([credentialsId: '261b4bc0-b4a4-471f-a23c-0821e2dd462d', url: 'https://index.docker.io/v1/']) {
-   docker push $IMAGE_NAME_DEV:$IMAGE_TAG
-   }
+  # login the Docker hub
+  docker login -u $LOGIN_CREDS_USR -p $LOGIN_CREDS_PSW
+  docker push $IMAGE_NAME_PROD:$IMAGE_TAG
   fi
 }
 
@@ -28,10 +28,10 @@ handle_merge() {
   if [ "$base" == "master" ] && [ "$head" == "refs/heads/dev" ]; then
     # Merge event from 'dev' to 'master'
     echo "Detected merge from 'dev' to 'master'. Pushing to Prod repo."
- docker build -t $IMAGE_NAME_PROD:$IMAGE_TAG -f ./Dockerfile.prod .
- withDockerRegistry([credentialsId: '261b4bc0-b4a4-471f-a23c-0821e2dd462d', url: 'https://index.docker.io/v1/']) {
-            docker push $IMAGE_NAME_PROD:$IMAGE_TAG
-                        }
+   docker build -t $IMAGE_NAME_PROD:$IMAGE_TAG -f ./Dockerfile.prod .
+  # login the Docker hub
+  docker login -u $LOGIN_CREDS_USR -p $LOGIN_CREDS_PSW
+  docker push $IMAGE_NAME_PROD:$IMAGE_TAG
   fi
 }
 
@@ -61,3 +61,4 @@ else
   echo "Invalid GitHub webhook signature."
   exit 1
 fi
+
