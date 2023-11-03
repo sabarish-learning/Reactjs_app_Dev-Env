@@ -22,7 +22,7 @@ if [[ "$CI_COMMIT_REF_NAME" == "MASTER_BRANCH" ]]; then
   # starting the Docker image
   docker-compose -f docker-compose.yaml -f  docker-compose.dev.yaml up 
 
-  echo "react application is running now access using ip address:8080"
+  echo "react application is running now access using http://ip_address:8080"
 else
   echo "Code pushed to a branch that doesn't trigger deployment"
 fi
