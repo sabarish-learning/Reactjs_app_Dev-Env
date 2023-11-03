@@ -39,7 +39,7 @@ sh 'sudo docker login -u $LOGIN_CREDS_USR -p $LOGIN_CREDS_PSW'
 sh 'sudo docker pull sabarish24/react-prod:1.0'
 sh 'sudo docker stop react-prod || true'
 sh 'sudo docker rm react-prod || true'
-sh 'sudo docker run -d - name react-prod -p 8080:80 sabarish24/react-prod:1.0'
+sh 'sudo docker run -d --name react-prod -p 8080:80 sabarish24/react-prod:1.0'
      }
     }
   }
