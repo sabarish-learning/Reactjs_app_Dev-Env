@@ -18,7 +18,7 @@ if [ "$GITHUB_EVENT_NAME" == "push" ] && [ "$GITHUB_REF" == "refs/heads/dev" ]; 
   # Push the image to the dev repository
   docker push "$IMAGE_NAME_DEV:$IMAGE_TAG"
   else
-     echo "Code pushed to a branch that doesn't trigger image build."
+     echo "Code pushed to a branch that doesn't trigger image build. not working"
 fi
 
 
