@@ -2,7 +2,7 @@ pipeline {
 agent { label 'Dev-Agent node' } 
   environment {
 	   LOGIN_CREDS = credentials('261b4bc0-b4a4-471f-a23c-0821e2dd462d')
-	  BRANCH_NAME = git rev-parse --abbrev-ref HEAD
+	  BRANCH_NAME = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStatus: true).trim()
     }
 stages{
 stage('Checkout')
@@ -13,7 +13,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
 }
         stage('Build and Push Docker Image (Dev)') {
             when {
-		 expression { env.BRANCH_NAME == 'dev' }
+		 expression { BRANCH_NAME == 'dev' }
             }
             steps {
                 script {
@@ -24,7 +24,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
             }
         stage('Build and Push Docker Image (Prod)') {
             when {
-		 expression { env.BRANCH_NAME == 'master' }
+		 expression { BRANCH_NAME == 'master' }
             }
             steps {
                 script {
