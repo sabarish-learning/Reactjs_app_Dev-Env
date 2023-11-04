@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Define your Docker image name and tag
