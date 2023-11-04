@@ -14,11 +14,11 @@ IMAGE_TAG="1.0"
   docker pull "$IMAGE_NAME_PROD:$IMAGE_TAG"
   
   #stop and remove the running container
-   docker stop react-prod || true
-   docker rm react-prod || true
+   docker stop "$IMAGE_NAME_PROD" || true
+   docker rm "$IMAGE_NAME_PROD" || true
      
   # starting the Docker image
-  docker-compose -f docker-compose.yaml -f  docker-compose.dev.yaml up 
+  docker-compose -f docker-compose.yaml -f  docker-compose.prod.yaml up 
 
 
   echo "deployment completed successfully"
