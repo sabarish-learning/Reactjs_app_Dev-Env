@@ -15,6 +15,8 @@ COMPOSE_FILE_2="docker-compose.prod.yaml"
   # Pull the Docker image to Docker Hub
   docker pull "$IMAGE_NAME_PROD:$IMAGE_TAG"
   
+  cd ..
+  
   #stop and remove the running container
 docker-compose -f "$COMPOSE_FILE_1" -f "$COMPOSE_FILE_2" down
      
