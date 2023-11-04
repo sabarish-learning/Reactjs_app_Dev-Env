@@ -4,7 +4,7 @@
 IMAGE_NAME_PROD="sabarish24/react-prod"
 IMAGE_TAG="1.0"
 
-  
+
   echo 'deploying on another server'
 
   # login the Docker hub
