@@ -9,27 +9,15 @@ steps{
 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'git_jenkins_key', url: 'https://github.com/sabarish-learning/Reactjs_app_Dev-Env']])
  }
 }
-stage('Build and push to dev repo'){
-when {
-   branch 'dev'
-     }
+stage('Build and push docker image'){
 steps{
 script{
-sh './script/build_dev.sh'
+sh './script/build_and_push.sh'
 sh 'echo done'
 }
  }
  }
- stage('Build and push to prod repo') {
-when {
-   branch 'master'
-    }
-steps{
-script{
-sh './script/build_prod.sh'
-}
-}
-}
+
 stage('Test image') {
 steps {
 sh './script/test.sh'
