@@ -2,6 +2,7 @@ pipeline {
 agent { label 'Dev-Agent node' } 
   environment {
 	   LOGIN_CREDS = credentials('261b4bc0-b4a4-471f-a23c-0821e2dd462d')
+	  BRANCH_NAME = $(git rev-parse --abbrev-ref HEAD)
     }
 stages{
 stage('Checkout')
