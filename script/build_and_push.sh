@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define your Docker image name and tag
-IMAGE_NAME_PROD="react-prod"
-IMAGE_NAME_DEV="react-dev"
+IMAGE_NAME_PROD="sabarish24/react-prod"
+IMAGE_NAME_DEV="sabarish24/react-dev"
 IMAGE_TAG="1.0"
 
 if [ -n "$GITHUB_ACTIONS" ]; then
