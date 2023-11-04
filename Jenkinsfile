@@ -4,9 +4,11 @@ agent { label 'Dev-Agent node' }
 	   LOGIN_CREDS = credentials('261b4bc0-b4a4-471f-a23c-0821e2dd462d')
     }
 stages{
-stage('Checkout'){
+stage('Checkout')
+{
 steps{
 checkout scm: scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sabarish-learning/Reactjs_app_Dev-Env']])
+}
 }
     stages {
         stage('Build and Push Docker Image (Dev)') {
