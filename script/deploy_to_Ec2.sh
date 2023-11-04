@@ -14,11 +14,10 @@ IMAGE_TAG="1.0"
   docker pull "$IMAGE_NAME_PROD:$IMAGE_TAG"
   
   #stop and remove the running container
-   docker stop "$IMAGE_NAME_PROD" || true
-   docker rm "$IMAGE_NAME_PROD" || true
+docker-compose -f docker-compose.yml -f docker-compose.prod.yaml down
      
   # starting the Docker image
- docker-compose -f ./docker-compose.yaml -f ./docker-compose.prod.yaml up -d
+ docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
 
 
   echo "deployment completed successfully"
