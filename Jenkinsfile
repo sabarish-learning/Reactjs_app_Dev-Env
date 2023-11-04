@@ -35,16 +35,16 @@ steps {
 sh './script/test.sh'
  }
 }
+	
 stage('Deploy'){
-
 steps{
 sh './script/deploy_to_Ec2.sh'
      }
     }
-  }
 post {
  always {
 	sh 'docker logout'
 		}
 	}
+}
 }
