@@ -18,7 +18,7 @@ IMAGE_TAG="1.0"
    docker rm "$IMAGE_NAME_PROD" || true
      
   # starting the Docker image
-  docker-compose -f ./docker-compose.yaml -f  ./docker-compose.prod.yaml up 
+ docker-compose -f ./docker-compose.yaml -f ./docker-compose.prod.yaml up -d
 
 
   echo "deployment completed successfully"
