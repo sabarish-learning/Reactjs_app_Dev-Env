@@ -10,7 +10,6 @@ steps{
 checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sabarish-learning/Reactjs_app_Dev-Env']])
 }
 }
-    stages {
         stage('Build and Push Docker Image (Dev)') {
             when {
                 changeset "origin/dev"
@@ -22,8 +21,6 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
                     }
                 }
             }
-        }
-
         stage('Build and Push Docker Image (Prod)') {
             when {
                 changeset "origin/master"
