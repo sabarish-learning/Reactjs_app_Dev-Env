@@ -14,7 +14,7 @@ IMAGE_TAG="1.0"
   docker pull "$IMAGE_NAME_PROD:$IMAGE_TAG"
   
   #stop and remove the running container
-docker-compose -f docker-compose.yml -f docker-compose.prod.yaml down
+docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml down
      
   # starting the Docker image
  docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
