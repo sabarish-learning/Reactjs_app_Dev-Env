@@ -10,11 +10,25 @@ checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfig
  }
 }
 stage('Build and push Docker'){
+when {
+   anyOf {
+   branch 'dev'
+   changeset '**/dev/**'
+     }
+   }
 steps{
 script{
-sh './script/build_and_push.sh'
+sh './script/build_dev.sh'
 }
  }
+when {
+   changeset '**/master/**'
+    }
+steps{
+script{
+sh './script/build_prod.sh'
+}
+}
 }
 stage('Test image') {
 steps {
@@ -22,6 +36,9 @@ sh './script/test.sh'
  }
 }
 stage('Deploy'){
+when {
+   changeset '**/master/**'
+    }
 steps{
 sh './script/deploy_to_Ec2.sh'
      }
