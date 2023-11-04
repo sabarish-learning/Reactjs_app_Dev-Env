@@ -12,7 +12,8 @@ currentbranch=$(git rev-parse --abbrev-ref HEAD)
                       docker build -t $IMAGE_NAME_DEV:$IMAGE_TAG -f ./Dockerfile.dev .
                          echo "$LOGIN_CREDS_PSW" | docker login -u "$LOGIN_CREDS_USR" --password-stdin
                          docker push $IMAGE_NAME_DEV:$IMAGE_TAG
-               
+                 }
+                    else {
                         echo "Docker image has been built and pushed to Dev Docker Hub."
                     }
                     else if (currentBranch == 'master') {
