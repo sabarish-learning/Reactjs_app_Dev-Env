@@ -12,7 +12,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
 }
         stage('Build and Push Docker Image (Dev)') {
             when {
-		branch 'dev'
+		 expression { env.BRANCH_NAME == 'dev' }
             }
             steps {
                 script {
@@ -23,7 +23,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
             }
         stage('Build and Push Docker Image (Prod)') {
             when {
-		branch 'master'
+		 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
                 script {
