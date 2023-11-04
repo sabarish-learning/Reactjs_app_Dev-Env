@@ -5,7 +5,7 @@ IMAGE_NAME_PROD="sabarish24/react-prod"
 IMAGE_NAME_DEV="sabarish24/react-dev"
 IMAGE_TAG="1.0"
 
- def currentBranch = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+currentbranch=$(git rev-parse --abbrev-ref HEAD)
                     
                     if (currentBranch == 'dev') {
                         // Build and push the development image
