@@ -30,6 +30,7 @@ when {
    branch 'master'
    changeset '**/master/**'
     }
+	}
 steps{
 script{
 sh './script/build_prod.sh'
@@ -47,6 +48,7 @@ when {
    branch 'master'
    changeset '**/master/**'
     }
+	}
 steps{
 sh './script/deploy_to_Ec2.sh'
      }
