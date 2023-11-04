@@ -1,3 +1,4 @@
+
 pipeline {
 agent { label 'Dev-Agent node' } 
   environment {
@@ -24,8 +25,9 @@ sh './script/build_dev.sh'
  }
  
  stage('Build and push to prod repo') {
- 
 when {
+  anyOf {
+   branch 'master'
    changeset '**/master/**'
     }
 steps{
@@ -41,6 +43,8 @@ sh './script/test.sh'
 }
 stage('Deploy'){
 when {
+  anyOf {
+   branch 'master'
    changeset '**/master/**'
     }
 steps{
