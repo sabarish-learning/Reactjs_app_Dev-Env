@@ -16,6 +16,7 @@ when {
 steps{
 script{
 sh './script/build_dev.sh'
+sh 'echo done'
 }
  }
  }
