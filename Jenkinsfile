@@ -40,12 +40,9 @@ sh './script/test.sh'
  }
 }
 stage('Deploy'){
-when {
-  anyOf {
-   branch 'master'
-   changeset '**/master/**'
-    }
-	}
+ when {
+		 expression { BRANCH_NAME == 'master' }
+            }
 steps{
 sh './script/deploy_to_Ec2.sh'
      }
