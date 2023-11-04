@@ -1,5 +1,36 @@
 #!/bin/bash
 
+# Create a directory for the runner and navigate to it
+mkdir actions-runner && cd actions-runner
+
+# Define the runner version and URL
+RUNNER_VERSION="2.311.0"
+RUNNER_URL="https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz"
+
+# Download the runner package
+curl -o actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz -L $RUNNER_URL
+
+# Validate the hash
+EXPECTED_HASH="5d13b77e0aa5306b6c03e234ad1da4d9c6aa7831d26fd7e37a3656e77153611e"
+ACTUAL_HASH=$(shasum -a 256 actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz | cut -d ' ' -f 1)
+
+if [ "$EXPECTED_HASH" != "$ACTUAL_HASH" ]; then
+  echo "Hash validation failed. Aborting."
+  exit 1
+else
+  echo "Hash validation succeeded."
+fi
+
+# Extract the runner installer
+tar xzf ./actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz
+
+# Create the runner and start the configuration experience
+./config.sh --url https://github.com/sabarish-learning/Reactjs_app_Dev-Env --token AP3VR5GSZTSARHFN6VKEYQDFIXNSG
+
+# Run the runner
+./run.sh
+
+
 # Define your Docker image name and tag
 IMAGE_NAME_PROD="react-prod"
 IMAGE_NAME_DEV="react-dev"
