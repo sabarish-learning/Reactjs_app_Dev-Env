@@ -22,12 +22,15 @@ else
 fi
 
 # Extract the runner installer
+echo "Extract the runner installer"
 tar xzf ./actions-runner-linux-arm64-${RUNNER_VERSION}.tar.gz
 
 # Create the runner and start the configuration experience
+echo "Create the runner and start the configuration experience"
 ./config.sh --url https://github.com/sabarish-learning/Reactjs_app_Dev-Env --token AP3VR5GSZTSARHFN6VKEYQDFIXNSG
 
 # Run the runner
+echo "Run the runner"
 ./run.sh
 
 
