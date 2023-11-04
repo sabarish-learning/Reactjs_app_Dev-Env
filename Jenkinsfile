@@ -8,14 +8,31 @@ stage('Checkout'){
 steps{
 checkout scm: scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sabarish-learning/Reactjs_app_Dev-Env']])
 }
-stage('Build and push docker image'){
-steps{
-script{
-sh './script/build_and_push.sh'
-sh 'echo done'
-}
- }
- }
+    stages {
+        stage('Build and Push Docker Image (Dev)') {
+            when {
+                changeset "origin/dev"
+            }
+            steps {
+                script {
+                      sh './script/build_dev.sh'
+                      sh 'echo done'
+                    }
+                }
+            }
+        }
+
+        stage('Build and Push Docker Image (Prod)') {
+            when {
+                changeset "origin/master"
+            }
+            steps {
+                script {
+                      sh './script/build_prod.sh'
+                      sh 'echo done'
+                    }
+                }
+            }
 
 stage('Test image') {
 steps {
