@@ -16,7 +16,7 @@ if [ "$GITHUB_EVENT_NAME" == "push" ] && [ "$GITHUB_REF" == "refs/heads/dev" ]; 
   echo "$LOGIN_CREDS_PSW" | docker login -u "$LOGIN_CREDS_USR" --password-stdin
 
   # Push the image to the dev repository
-  docker push "$IMAGE_NAME_PROD:$IMAGE_TAG"
+  docker push "$IMAGE_NAME_DEV:$IMAGE_TAG"
   else
      echo "Code pushed to a branch that doesn't trigger image build."
 fi
