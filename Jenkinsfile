@@ -12,6 +12,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
 }
         stage('Build and Push Docker Image (Dev)') {
             when {
+		branch 'dev'
                 changeset "origin/dev"
             }
             steps {
@@ -23,6 +24,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
             }
         stage('Build and Push Docker Image (Prod)') {
             when {
+		branch 'master'
                 changeset "origin/master"
             }
             steps {
