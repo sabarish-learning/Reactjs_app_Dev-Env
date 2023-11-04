@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # Define your Docker image name and tag
 IMAGE_NAME_PROD="sabarish24/react-prod"
