@@ -1,4 +1,3 @@
-
 pipeline {
 agent { label 'Dev-Agent node' } 
   environment {
@@ -12,25 +11,18 @@ checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfig
 }
 stage('Build and push to dev repo'){
 when {
-   anyOf {
    branch 'dev'
-   changeset '**/dev/**'
      }
-   }
 steps{
 script{
 sh './script/build_dev.sh'
 }
  }
  }
- 
  stage('Build and push to prod repo') {
 when {
-  anyOf {
    branch 'master'
-   changeset '**/master/**'
     }
-	}
 steps{
 script{
 sh './script/build_prod.sh'
