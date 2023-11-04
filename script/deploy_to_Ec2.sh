@@ -4,6 +4,8 @@
 IMAGE_NAME_PROD="sabarish24/react-prod"
 IMAGE_TAG="1.0"
 
+COMPOSE_FILE_1="docker-compose.yaml"
+COMPOSE_FILE_2="docker-compose.prod.yaml"
 
   echo 'deploying on another server'
 
@@ -14,10 +16,10 @@ IMAGE_TAG="1.0"
   docker pull "$IMAGE_NAME_PROD:$IMAGE_TAG"
   
   #stop and remove the running container
-docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml down
+docker-compose -f "$COMPOSE_FILE_1" -f "$COMPOSE_FILE_2" down
      
   # starting the Docker image
- docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
+ docker-compose -f "$COMPOSE_FILE_1" -f "$COMPOSE_FILE_2" up -d
 
 
   echo "deployment completed successfully"
