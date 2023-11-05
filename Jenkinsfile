@@ -41,9 +41,7 @@ sh './script/test.sh'
 stage('Deploy'){
 steps{
     script {
-        if (env.BRANCH_NAME == 'master') {
               sh './script/deploy.sh'
-        } 
          }
      }
     }
