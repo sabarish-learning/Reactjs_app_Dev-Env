@@ -18,3 +18,5 @@ echo "started"
     
     # Push the image to the dev repository
     docker push "$IMAGE_NAME_DEV:$IMAGE_TAG"
+
+    echo "Docker image has been built and pushed to Dev Docker Hub."
