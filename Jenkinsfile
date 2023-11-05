@@ -24,6 +24,7 @@ checkout scm
         sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
         sh 'git branch'
         sh 'ls -ltr'
+        sh 'ls -ltr'
     }
 }
     stage('Build and Push Docker Image') {
