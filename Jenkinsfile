@@ -9,7 +9,7 @@ stages{
 stage('Checkout')
 {
 steps{
-checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sabarish-learning/Reactjs_app_Dev-Env']])
+checkout scm
 }
 }
     stage('Build and Push Docker Image') {
