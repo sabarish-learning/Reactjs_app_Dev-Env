@@ -16,7 +16,7 @@ stage('Build and Push Docker Image') {
 steps {
 script {
  sh 'echo $BRANCH_NAME'
-sh './script/build.sh'
+sh './script/build.sh $BRANCH_NAME'
 sh 'echo done'
 }
 }
@@ -28,7 +28,7 @@ sh './script/test.sh'
 }	
 stage('Deploy'){
 steps{
-sh './script/deploy.sh'
+sh './script/deploy.sh $BRANCH_NAME'
      }
     }
 }	
