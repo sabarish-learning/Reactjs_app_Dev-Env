@@ -12,6 +12,13 @@ steps{
 checkout scm
 }
 }
+    stage('Debug Information') {
+    steps {
+        sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
+        sh 'git branch'
+        sh 'ls -l'
+    }
+}
     stage('Build and Push Docker Image') {
             steps {
                 script {
