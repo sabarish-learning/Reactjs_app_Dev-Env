@@ -15,7 +15,7 @@ checkout scm
 }
     stage('Debug Information') {
     steps {
-        sh 'echo "$currentbranch"'
+        sh 'echo "$currentBranch"'
         sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
         sh 'git branch'
         sh 'ls -ltr'
