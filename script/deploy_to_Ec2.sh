@@ -13,7 +13,6 @@ IMAGE_TAG="1.0"
   # Pull the Docker image to Docker Hub
   docker pull "$IMAGE_NAME_PROD:$IMAGE_TAG"
   
-  cd ..
   
   #stop and remove the running container
  docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml down
