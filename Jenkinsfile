@@ -32,7 +32,13 @@ sh './script/test.sh'
 }	
 stage('Deploy'){
 steps{
-sh './script/deploy.sh'
+    script {
+        if (env.BRANCH_NAME == 'master') {
+              sh './script/deploy.sh'
+        } else {
+            echo "Branch not configured for Docker image build."
+             }
+         }
      }
     }
 }	
