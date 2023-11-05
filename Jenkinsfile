@@ -23,7 +23,7 @@ checkout scm
         sh 'echo "$MOST_RECENT_BRANCH"'
         sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
         sh 'git branch'
-        sh 'll'
+        sh 'ls -ltr'
     }
 }
     stage('Build and Push Docker Image') {
