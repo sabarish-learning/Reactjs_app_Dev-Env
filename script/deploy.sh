@@ -5,7 +5,7 @@ IMAGE_NAME_PROD="sabarish24/react-prod"
 IMAGE_TAG="1.0"
 
 
-if [ "$BRANCH_NAME" = "master" ]; then
+
   echo 'deploying on another server'
 
   # login the Docker hub
@@ -24,6 +24,4 @@ if [ "$BRANCH_NAME" = "master" ]; then
 
   echo "deployment completed successfully"
   
-  else
-    echo "Code pushed to a branch that doesn't trigger image build."
-fi
+
