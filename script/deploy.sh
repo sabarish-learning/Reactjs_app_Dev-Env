@@ -5,7 +5,7 @@ IMAGE_NAME_PROD="sabarish24/react-prod"
 IMAGE_TAG="1.0"
 
 
-
+if [ "$MOST_RECENT_BRANCH" = "origin/master" ]; then
   echo 'deploying on another server'
 
   # login the Docker hub
@@ -23,5 +23,5 @@ IMAGE_TAG="1.0"
 
 
   echo "deployment completed successfully"
-  
+  fi
 
