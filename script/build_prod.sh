@@ -17,4 +17,6 @@ echo "started"
     # Push the image to the prod repository
     docker push "$IMAGE_NAME_PROD:$IMAGE_TAG"
 
+    echo "Docker image has been built and pushed to Prod Docker Hub."
+
 
