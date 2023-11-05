@@ -15,6 +15,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
 stage('Build and Push Docker Image') {
 steps {
 script {
+ sh 'echo $BRANCH_NAME'
 sh './script/build.sh'
 sh 'echo done'
 }
