@@ -5,7 +5,7 @@ IMAGE_NAME_PROD="sabarish24/react-prod"
 IMAGE_TAG="1.0"
 
 
-if [ "$BRANCH_NAME" = "master" ]; then
+if [ "$BRANCH_NAME" = "origin/master" ]; then
   echo 'deploying on another server'
 
   # login the Docker hub
