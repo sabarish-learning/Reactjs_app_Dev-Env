@@ -10,6 +10,14 @@ steps{
 checkout scm: scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sabarish-learning/Reactjs_app_Dev-Env']])
 }
 }
+	    stage('Debug Information') {
+    steps {
+        sh 'echo "currentbranch : $(git rev-parse --abbrev-ref HEAD)"'
+        sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
+        sh 'git branch'
+        sh 'ls -l'
+    }
+}
     stages {
         stage('Build and Push Docker Image (Dev)') {
             when {
