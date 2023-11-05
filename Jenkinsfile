@@ -29,13 +29,7 @@ checkout scm
     stage('Build and Push Docker Image') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'dev') {
-                        sh './script/build_dev.sh'
-                    } else if (env.BRANCH_NAME == 'master') {
-                        sh './script/build_prod.sh'
-                    } else {
-                        echo "Branch not configured for Docker image build."
-                    }
+               sh './script/build.sh'
                 }
             }
         }
