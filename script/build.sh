@@ -6,13 +6,13 @@ IMAGE_NAME_DEV="sabarish24/react-dev"
 IMAGE_TAG="1.0"
 
 
-if [ "$BRANCH_NAME" = "dev" ]; then
+if [ "$BRANCH_NAME" = "origin/dev" ]; then
     # Build and push the development image
     docker build -t "$IMAGE_NAME_DEV:$IMAGE_TAG" -f ./Dockerfile.dev .
     ocker login -u $LOGIN_CREDS_USR -p $LOGIN_CREDS_PSW
     docker push "$IMAGE_NAME_DEV:$IMAGE_TAG"
     echo "Docker image has been built and pushed to Dev Docker Hub."
-elif [ "$BRANCH_NAME" = "master" ]; then
+elif [ "$BRANCH_NAME" = "origin/master" ]; then
     # Build and push the production image
     docker build -t "$IMAGE_NAME_PROD:$IMAGE_TAG" -f ./Dockerfile.prod .
     ocker login -u $LOGIN_CREDS_USR -p $LOGIN_CREDS_PSW
