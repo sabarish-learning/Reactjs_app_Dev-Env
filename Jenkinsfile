@@ -12,15 +12,19 @@ steps{
 checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sabarish-learning/Reactjs_app_Dev-Env']])
 }
 }
-stage('Build and Push Docker Image') {
-steps {
-script {
- sh 'echo $BRANCH_NAME'
-sh './script/build.sh'
-sh 'echo done'
-}
-}
-}
+    stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    if (env.BRANCH_NAME == 'dev') {
+                        sh './script/build_dev.sh'
+                    } else if (env.BRANCH_NAME == 'master') {
+                        sh './script/build_prod.sh'
+                    } else {
+                        echo "Branch not configured for Docker image build."
+                    }
+                }
+            }
+        }
 stage('Test image') {
 steps {
 sh './script/test.sh'
