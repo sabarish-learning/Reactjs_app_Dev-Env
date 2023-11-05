@@ -12,7 +12,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
 }
 }
         stage('Build and Push Docker Image (Dev)') {
-         
+            when { branch 'dev' }
             steps {
                 script {
                       sh './script/build_dev.sh'
@@ -21,7 +21,7 @@ checkout scmGit(branches: [[name: '*/master'], [name: '*/dev']], extensions: [],
                 }
             }
         stage('Build and Push Docker Image (Prod)') {
- 
+             when { branch 'master' }
             steps {
                 script {
                       sh './script/build_prod.sh'
@@ -37,6 +37,7 @@ sh './script/test.sh'
 }
 	
 stage('Deploy'){
+when { branch 'master' }
 steps{
 sh './script/deploy_to_Ec2.sh'
      }
