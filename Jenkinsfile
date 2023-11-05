@@ -17,7 +17,7 @@ checkout scm
         sh 'echo "currentbranch : $(git for-each-ref --sort='-committerdate' --format="%(refname:short) %(committerdate:relative)" refs/remotes/origin/ | grep -v HEAD)"'
         sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
         sh 'git branch'
-        sh 'ls -l'
+        sh 'ls -ltr'
     }
 }
     stage('Build and Push Docker Image') {
