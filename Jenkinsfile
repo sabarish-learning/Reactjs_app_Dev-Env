@@ -14,7 +14,7 @@ checkout scm
 }
     stage('Debug Information') {
     steps {
-        sh 'echo "currentbranch : $(git rev-parse --abbrev-ref HEAD)"'
+        sh 'echo "currentbranch : $(git fetch && git for-each-ref --sort='-committerdate' --format="%(refname:short) %(committerdate:relative)" refs/remotes/origin/ | grep -v HEAD)"'
         sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
         sh 'git branch'
         sh 'ls -l'
