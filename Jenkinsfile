@@ -4,7 +4,7 @@ label 'Dev-Agent node'
 } 
 environment {
 LOGIN_CREDS = credentials('261b4bc0-b4a4-471f-a23c-0821e2dd462d')  
-BRANCH_NAME = env.BRANCH_NAME
+BRANCH_NAME = 'env.BRANCH_NAME'
 }
 stages{
 stage('Checkout')
