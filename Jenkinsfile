@@ -14,6 +14,7 @@ checkout scm
 }
     stage('Debug Information') {
     steps {
+        sh 'echo "currentbranch : $(git rev-parse --abbrev-ref HEAD)"'
         sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
         sh 'git branch'
         sh 'ls -l'
