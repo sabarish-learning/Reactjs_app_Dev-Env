@@ -6,6 +6,7 @@ services:
      build:
        dockerfile: Dockerfile.prod
      container_name: app-prod-c
+     restart: unless-stopped
      ports:
        - "3000:80"
      environment:
